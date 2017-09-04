@@ -21,6 +21,8 @@ module.exports = function(app){
   homeRouter.get('/', HomeController.index);
   homeRouter.get('/add', HomeController.add);
   homeRouter.post('/addpost', HomeController.addpost);
+  homeRouter.get('/:id/delete', HomeController.delete);
+  homeRouter.post('/:id/deletePost', HomeController.deletePost);
 
   userRouter.get('/login', UserController.login);
   userRouter.get('/signup', UserController.signup);

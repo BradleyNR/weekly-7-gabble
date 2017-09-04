@@ -13,6 +13,12 @@
   </div>
 </section>
 
+{{#if error}}
+<div class="row">
+  <h3 class="offset-by-two eight columns button button-error">ERROR: {{error}}</h3>
+</div>
+{{/if}}
+
 {{#each post}}
 <div class="row">
   <div class="eight columns offset-by-two postbox">
@@ -28,7 +34,9 @@
 
     <section class="authorbox row">
       <p class="button button-primary six columns button-post">Whispered by: {{author}}</p>
-      <a class="button button-primary two columns button-post-delete" href="/delete">Delete</a>
+      <a class="button button-primary two columns button-post" href="#">Like</a>
+      <a class="button button-primary two columns button-post" href="#">Edit</a>
+      <a class="button button-primary two columns button-post-delete" href="{{id}}/delete">Delete</a>
     </section>
   </div>
 </div>

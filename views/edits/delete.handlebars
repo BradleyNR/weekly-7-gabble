@@ -1,0 +1,31 @@
+
+<div class="row">
+  <div class="eight columns offset-by-two postbox">
+
+    <section class="titlebox">
+      <h3>{{post.title}}</h3>
+    </section>
+
+    <section class="bodybox">
+      <p>You hear a whisper...</p>
+      <h3>{{post.body}}</h3>
+    </section>
+
+    <section class="authorbox row">
+      <p class="button button-primary six columns button-post">Whispered by: {{post.author}}</p>
+    </section>
+  </div>
+</div>
+
+<hr>
+
+<h1>Are you sure you want to delete this post?</h1>
+<section>
+  <form class="button button-primary" action="/{{post.id}}/deletePost" method="post">
+    <input type="submit" name="" value="Yes">
+  </form>
+  <form class="button button-primary" action="/" method="get">
+    <input type="submit" name="" value="No - Go Back">
+  </form>
+</section>
+<hr>
