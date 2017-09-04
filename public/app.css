@@ -1,5 +1,28 @@
+.main-header {
+  color: #FFFFFF;
+  text-align: center;
+  margin: 0 0 20px 0;
+  height: 170px;
+  background-color: #6D7993;
+}
+
+.main-header-text {
+  font-size: 80px;
+  letter-spacing: 15px;
+  margin: 0;
+}
+
+.main-header p {
+  font-size: 25px;
+}
+
+.main-button-area {
+  height: 60px;
+}
+
 .row .button-primary {
   background-color: #6D7993;
+  border: 1px solid #000000;
 }
 
 
@@ -16,6 +39,7 @@
 .titlebox h3 {
   margin: 0;
   padding: 0;
+  font-weight: bold;
 }
 
 .bodybox {
@@ -35,4 +59,13 @@
 .authorbox p {
   margin: 0;
   padding: 0;
+}
+
+.row .button-post {
+  margin: 10px;
+}
+
+.row .button-post-delete {
+  margin: 10px;
+  background-color: #b71c1c;
 }

@@ -1,20 +1,21 @@
-<h1>Whisper Zone</h1>
+<section class="main-header">
+  <h1 class="main-header-text">Whisper</h1>
+  <p>"Hear the echos of the void"</p>
+</section>
 
-<hr>
 
-<section>
+<section class="main-button-area">
   <div class="row">
-      <a href="#" class="button button-primary two columns">Home</a>
+      <a href="/" class="button button-primary two columns offset-by-two">Home</a>
       <a href="/add" class="button button-primary two columns">New Whisper</a>
       <a href="/login" class="button button-primary two columns">Log In</a>
       <a href="/logout" class="button button-primary two columns">Log Out</a>
   </div>
 </section>
-<hr>
 
+{{#each post}}
 <div class="row">
-  {{#each post}}
-  <div class="four columns postbox">
+  <div class="eight columns offset-by-two postbox">
 
     <section class="titlebox">
       <h3>{{title}}</h3>
@@ -25,17 +26,19 @@
       <h3>{{body}}</h3>
     </section>
 
-    <section class="authorbox">
-      <p>Whispered by: {{author}}</p>
+    <section class="authorbox row">
+      <p class="button button-primary six columns button-post">Whispered by: {{author}}</p>
+      <a class="button button-primary two columns button-post-delete" href="/delete">Delete</a>
     </section>
   </div>
-  {{/each}}
 </div>
-
+<br>
+{{/each}}
 
 
 <p>TESTING AREA:</p>
-<p> Username: {{user.username}} </p>
+<p> Currently logged in as: {{user.username}} </p>
+
 
 
 
