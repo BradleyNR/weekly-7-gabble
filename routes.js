@@ -19,6 +19,8 @@ module.exports = function(app){
 
   homeRouter.use(requireLogin);
   homeRouter.get('/', HomeController.index);
+  homeRouter.get('/add', HomeController.add);
+  homeRouter.post('/addpost', HomeController.addpost);
 
   userRouter.get('/login', UserController.login);
   userRouter.get('/signup', UserController.signup);

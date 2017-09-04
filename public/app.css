@@ -1,0 +1,38 @@
+.row .button-primary {
+  background-color: #6D7993;
+}
+
+
+.postbox {
+  border: 1px solid #000000;
+  text-align: center;
+}
+
+.titlebox {
+  background-color: #6D7993;
+  padding: 10px 0 20px 0;
+}
+
+.titlebox h3 {
+  margin: 0;
+  padding: 0;
+}
+
+.bodybox {
+  background-color: #9099A2;
+  padding: 30px 0 30px 0;
+}
+
+.bodybox h3 {
+  margin: 0;
+  padding: 0;
+}
+
+.authorbox {
+  background-color: #D5D5D5;
+}
+
+.authorbox p {
+  margin: 0;
+  padding: 0;
+}

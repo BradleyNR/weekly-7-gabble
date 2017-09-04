@@ -12,6 +12,9 @@ const routes = require('./routes');
 
 const app = express();
 
+//static css
+app.use('/static', express.static('public'));
+//bodyparser
 app.use(bodyParser.urlencoded({extended: false}));
 
 //bcrypt function to generate hashes, used in local-login and local-signup

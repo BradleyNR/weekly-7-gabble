@@ -4,12 +4,6 @@ module.exports = function(sequelize, DataTypes) {
     title: DataTypes.STRING,
     body: DataTypes.TEXT,
     author: DataTypes.STRING
-  }, {
-    classMethods: {
-      associate: function(models) {
-        // associations can be defined here
-      }
-    }
   });
   return Entry;
 };
