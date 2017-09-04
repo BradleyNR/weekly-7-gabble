@@ -1,51 +1,44 @@
 const models = require('./models');
-const routes = require('./routes');
 const express = require('express');
 const exphbs = require('express-handlebars');
 const bodyParser = require('body-parser');
-const passport = require('passport');
-const LocalStrategy = require('passport-local').Strategy;
-const session = require('express-session');
+const passport = require('passport'),
+  LocalStrategy = require('passport-local').Strategy,
+  session = require('express-session');
+  // flash = require('express-flash-messages');
+
+const routes = require('./routes');
 
 const app = express();
 
-// login middleware
-const requireLogin = (req, res, next) => {
-  if (req.user !== null) {
-    next()
-  } else {
-    res.redirect('/login');
-  }
+app.use(bodyParser.urlencoded({extended: false}));
+
+const checkPassword = function(user, password){
+  return user.password === password;
 };
 
-passport.use('local-login', new LocalStrategy((username, password, done) => {
-  //find user with sequelize whos username matches and then do the passport stuff!
+passport.use('local-login', new LocalStrategy(function(username, password, done){
   models.Userlogin.findOne({
     where: {
       username: username
     }
-  }).then((user) => {
-    //no user, end
-    if (!user) {
+  }).then(function(user){
+    if(user === null) {
       done(null, false);
-    //user and pass work
     } else if (user && checkPassword(user, password)) {
-      done(null, user)
-    //else, end
+      done(null, user);
     } else {
-      done(null, false)
+      done(null, false);
     }
   });
 }));
 
-//storing user id on session
-passport.serializeUser((user, done) => {
+passport.serializeUser(function(user, done){
   done(null, user.id);
 });
 
-//gimme the user from the database
-passport.deserializeUser((id, done) =>{
-  models.Userlogin.findById(id).then((user) => {
+passport.deserializeUser(function(id, done){
+  models.Userlogin.findById(id).then(function(user){
     done(null, user);
   });
 });
@@ -59,8 +52,6 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 
-app.use(bodyParser.urlencoded({extended: false}));
-
 app.engine('handlebars', exphbs({defaultLayout: 'main'}));
 app.set('view engine', 'handlebars');
 
@@ -69,4 +60,4 @@ routes(app);
 app.listen(3000);
 
 
-module.exports = requireLogin;
+module.exports = app;
