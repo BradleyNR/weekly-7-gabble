@@ -21,10 +21,17 @@ module.exports = function(app){
   homeRouter.get('/', HomeController.index);
 
   userRouter.get('/login', UserController.login);
+  userRouter.get('/signup', UserController.signup);
+  userRouter.get('/logout', UserController.logout);
   userRouter.post('/login', passport.authenticate('local-login', {
     successRedirect: '/',
     failureRedirect: '/login',
   }));
+  userRouter.post('/signup', passport.authenticate('local-signup', {
+    successRedirect: '/login',
+    failureRedirect: '/signup'
+  }));
+
 
 
   app.use('/', userRouter);
