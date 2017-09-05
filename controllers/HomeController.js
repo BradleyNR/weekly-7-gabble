@@ -3,7 +3,7 @@ const models = require('../models');
 
 const HomeController = {
   index: function(req, res){
-    models.Entry.findAll().then(function(post){
+    models.Entry.findAll({order: [['updatedAt', 'DESC']]}).then(function(post){
       res.render('homepage', {user: req.user, post: post, error: req.session.error});
       req.session.error = undefined;
     })
