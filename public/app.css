@@ -113,7 +113,19 @@ form .login-buttons:last-child{
   background-color: #6D7993;
 }
 
-.login-bottom-box {
+
+
+/*Floating Skeleton Orb - Currently Unused*/
+/*.login-bottom-box {
+  margin: auto;
+  margin-top: 5%;
+  height: 200px;
+  width: 15%;
+  margin: auto;*/
+  /*border-radius: 360px;
   background-color: black;
-  height: 30px;
-}
+  background-image: url(http://i.imgur.com/ByIEAWd.gif);
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+}*/
