@@ -46,7 +46,6 @@ body {
   border: 1px solid #000000;
 }
 
-
 .postbox {
   border: 1px solid #000000;
   text-align: center;
@@ -89,4 +88,32 @@ body {
 .row .button-post-delete {
   margin: 10px;
   background-color: #b71c1c;
+}
+
+.delete-yes input {
+  margin-top: 20px;
+  color: #FFFFFF;
+  background-color: #b71c1c;
+}
+
+.delete-no input{
+  margin-top: 20px;
+  color: #FFFFFF;
+  background-color: #6D7993;
+}
+
+form .post-button {
+  color: #FFFFFF;
+  background-color: #6D7993;
+}
+
+form .login-buttons:last-child{
+  margin-left: 30px;
+  color: #FFFFFF;
+  background-color: #6D7993;
+}
+
+.login-bottom-box {
+  background-color: black;
+  height: 30px;
 }

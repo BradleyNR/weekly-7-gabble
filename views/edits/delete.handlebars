@@ -1,3 +1,7 @@
+<section class="main-header">
+  <h1 class="main-header-text">Delete Whisper</h1>
+  <p>"The whispers slowly fade..."</p>
+</section>
 
 <div class="row">
   <div class="eight columns offset-by-two postbox">
@@ -12,20 +16,14 @@
     </section>
 
     <section class="authorbox row">
-      <p class="button button-primary six columns button-post">Whispered by: {{post.author}}</p>
+      <section>
+        <form class="offset-by-two four columns delete-yes" action="/{{post.id}}/deletePost" method="post">
+            <input class="btn twelve columns delete-yes" type="submit" name="" value="Delete Post">
+        </form>
+        <form class="four columns delete-no" action="/" method="get">
+          <input class="twelve columns" type="submit" name="" value="Go Back">
+        </form>
+      </section>
     </section>
   </div>
 </div>
-
-<hr>
-
-<h1>Are you sure you want to delete this post?</h1>
-<section>
-  <form class="button button-primary" action="/{{post.id}}/deletePost" method="post">
-    <input type="submit" name="" value="Yes">
-  </form>
-  <form class="button button-primary" action="/" method="get">
-    <input type="submit" name="" value="No - Go Back">
-  </form>
-</section>
-<hr>

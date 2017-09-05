@@ -20,7 +20,7 @@
 {{/if}}
 
 {{#each post}}
-<div class="row">
+<div class="row postbox-main-container">
   <div class="eight columns offset-by-two postbox">
 
     <section class="titlebox">
@@ -33,7 +33,7 @@
     </section>
 
     <section class="authorbox row">
-      <p class="button button-primary three columns button-post">{{author}}</p>
+      <p class="button button-primary three columns button-post">User: {{author}}</p>
       <a class="button button-primary five columns button-post" href="#">{{createdAt}}</a>
       <a class="button button-primary two columns button-post" href="#">Like</a>
       <a class="button button-primary two columns button-post-delete" href="{{id}}/delete">Delete</a>
@@ -42,27 +42,3 @@
 </div>
 <br>
 {{/each}}
-
-
-<p>TESTING AREA:</p>
-<p> Currently logged in as: {{user.username}} </p>
-
-
-
-
-
-
-<!-- <div class="row">
-  <form class="" action="index.html" method="post">
-    <input class="button button-primary" type="submit" name="" value="home">
-  </form>
-  <form class="" action="index.html" method="post">
-    <input class="button button-primary" type="submit" name="" value="New Whisper">
-  </form>
-  <form class="" action="index.html" method="post">
-    <input class="button button-primary" type="submit" name="" value="Log In">
-  </form>
-  <form class="" action="index.html" method="post">
-    <input class="button button-primary" type="submit" name="" value="Log Out">
-  </form>
-</div> -->

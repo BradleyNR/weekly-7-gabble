@@ -1,13 +1,17 @@
-<h1>Whisper Signup</h1>
+<section class="main-header">
+  <h1 class="main-header-text">Whisper Signup</h1>
+  <p>"You feel a chilling urge to follow the voices"</p>
+</section>
 
-<hr>
 <section>
   <div class="row">
     <form action="/signup" method="post">
-      <input class="four columns" type="text" name="username" value="" placeholder="Username">
-      <input class="four columns" type="password" name="password" value="" placeholder="Password">
-      <input class="two columns" type="submit" name="" value="Sign Up">
+      <input class="three columns offset-by-one" type="text" name="username" value="" maxlength="14" placeholder="New Username">
+      <input class="three columns" type="password" name="password" value="" placeholder="New Password">
+      <input class="two columns login-buttons" type="submit" name="" value="Sign Up">
+    </form>
+    <form action="/login" method="get">
+      <input class="three columns login-buttons" type="submit" name="" value="Have an account? Log In">
     </form>
   </div>
 </section>
-<a href="/login">Already have an account? Log In.</a>
