@@ -39,17 +39,14 @@ const HomeController = {
     }).then(function(){
       res.redirect('/');
     })
+  },
+  specificUserPosts: function(req, res){
+    models.Entry.findAll({
+      where: {author: req.user.username}
+    }).then(function(post){
+      res.render('homepage', {user: req.user, post: post, error: req.session.error});
+    })
   }
 };
-
-// deletePost: function(req, res){
-//   let thisPost = req.params.id;
-//   models.Entry.destroy({
-//     where: {id: thisPost}
-//   }).then(function(){
-//
-//   })
-
-
 
 module.exports = HomeController;

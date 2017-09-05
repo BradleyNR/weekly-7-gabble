@@ -8,7 +8,7 @@
   <div class="row">
       <a href="/" class="button button-primary two columns offset-by-two">Home</a>
       <a href="/add" class="button button-primary two columns">New Whisper</a>
-      <a href="/login" class="button button-primary two columns">Log In</a>
+      <a href="/myposts" class="button button-primary two columns">My Whispers</a>
       <a href="/logout" class="button button-primary two columns">Log Out</a>
   </div>
 </section>
@@ -33,9 +33,9 @@
     </section>
 
     <section class="authorbox row">
-      <p class="button button-primary six columns button-post">Whispered by: {{author}}</p>
+      <p class="button button-primary three columns button-post">{{author}}</p>
+      <a class="button button-primary five columns button-post" href="#">{{createdAt}}</a>
       <a class="button button-primary two columns button-post" href="#">Like</a>
-      <a class="button button-primary two columns button-post" href="#">Edit</a>
       <a class="button button-primary two columns button-post-delete" href="{{id}}/delete">Delete</a>
     </section>
   </div>
