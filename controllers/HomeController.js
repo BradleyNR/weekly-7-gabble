@@ -15,7 +15,8 @@ const HomeController = {
     models.Entry.create({
     title: req.body.title,
     body: req.body.body,
-    author: req.user.username
+    author: req.user.username,
+    userId: req.user.id
     }).then(function(newpost){
       res.redirect('/');
   })},
@@ -24,7 +25,7 @@ const HomeController = {
     models.Entry.findOne({
       where: {id: thisPost}
     }).then(function(post){
-      if (post.author == req.user.username) {
+      if (post.userId == req.user.id) {
         res.render('edits/delete', {post: post});
       } else {
         req.session.error = 'You may only delete your own whispers';
@@ -42,7 +43,7 @@ const HomeController = {
   },
   specificUserPosts: function(req, res){
     models.Entry.findAll({
-      where: {author: req.user.username}
+      where: {userId: req.user.id}
     }).then(function(post){
       res.render('homepage', {user: req.user, post: post, error: req.session.error});
     })

@@ -4,5 +4,9 @@ module.exports = function(sequelize, DataTypes) {
     username: DataTypes.STRING,
     password: DataTypes.STRING
   });
+  Userlogin.associate = (models) => {
+    Userlogin.hasMany(models.Entry, {foreignKey: 'userId'});
+  };
+
   return Userlogin;
 };

@@ -2,13 +2,14 @@ body {
   background-color: #e6ecf0;
 }
 
+/*Header gif: http://imgur.com/gallery/n3D6h */
 .main-header {
   color: #FFFFFF;
   text-align: center;
   margin: 0 0 20px 0;
   height: 170px;
   background-color: #000000;
-  background-image: url(https://68.media.tumblr.com/34ed9d0ff4a21625981372291cb53040/tumblr_nv3hwpsZQY1uft51jo1_400.gif);
+  background-image: url(http://i.imgur.com/js9cVRC.gif);
   background-size: contain;
   background-repeat: no-repeat;
 }
