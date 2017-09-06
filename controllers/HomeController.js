@@ -19,14 +19,10 @@ const HomeController = {
     body: req.body.body,
     author: req.user.username,
     userId: req.user.id
-    }).then(function(newpost){
-      models.Like.create({
-      post: newpost.id,
-      user: req.user.username
-    }).then(function(newlike){
+  }).then(function(newpost){
       res.redirect('/');
     })
-  })},
+  },
   delete: function(req, res){
     let thisPost = req.params.id;
     models.Entry.findOne({
@@ -53,6 +49,15 @@ const HomeController = {
       where: {userId: req.user.id}
     }).then(function(post){
       res.render('homepage', {user: req.user, post: post, error: req.session.error});
+    })
+  },
+  likePost: function(req, res){
+      let thisPost = req.params.id;
+      models.Like.create({
+      post: thisPost,
+      user: req.user.username
+    }).then(function(thislike){
+      res.redirect('/');
     })
   }
 };

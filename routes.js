@@ -24,6 +24,7 @@ module.exports = function(app){
   homeRouter.get('/:id/delete', HomeController.delete);
   homeRouter.post('/:id/deletePost', HomeController.deletePost);
   homeRouter.get('/myposts', HomeController.specificUserPosts);
+  homeRouter.post('/like/:id', HomeController.likePost);
 
   userRouter.get('/login', UserController.login);
   userRouter.get('/signup', UserController.signup);
