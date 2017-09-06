@@ -18,7 +18,12 @@ const HomeController = {
     author: req.user.username,
     userId: req.user.id
     }).then(function(newpost){
+      models.Like.create({
+      post: newpost.id,
+      user: req.user.username
+    }).then(function(newlike){
       res.redirect('/');
+    })
   })},
   delete: function(req, res){
     let thisPost = req.params.id;

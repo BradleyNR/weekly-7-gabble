@@ -9,6 +9,7 @@ module.exports = function(sequelize, DataTypes) {
   });
   Userlogin.associate = (models) => {
     Userlogin.hasMany(models.Entry, {foreignKey: 'userId'});
+    Userlogin.hasMany(models.Like, {foreignKey: 'user'});
   };
 
   return Userlogin;

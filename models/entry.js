@@ -11,11 +11,12 @@ module.exports = function(sequelize, DataTypes) {
         model: 'Userlogins',
         key: 'id'
     }
-  }  
+  }
   });
   Entry.associate = (models) => {
-    //setting the table and column the dog belongs to
     Entry.belongsTo(models.Userlogin, {foreignKey: 'userId'});
+    Entry.hasMany(models.Like, {foreignKey: 'post'});
   };
+
   return Entry;
 };
