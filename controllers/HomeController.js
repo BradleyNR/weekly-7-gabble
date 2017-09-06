@@ -3,6 +3,17 @@ const models = require('../models');
 
 // {order: [['updatedAt', 'DESC']]}   -- add to find all to order correctly
 
+function isUniqueLike (id) {
+    return models.Like.count({ where: { id: id } })
+      .then(count => {
+        if (count != 0) {
+          return false;
+        }
+        return true;
+    });
+}
+
+
 const HomeController = {
   index: function(req, res){
     models.Entry.findAll({include: [models.Like]}).then(function(post){
@@ -51,16 +62,36 @@ const HomeController = {
       res.render('homepage', {user: req.user, post: post, error: req.session.error});
     })
   },
+  // TODO: DO NOT LET LIKES BE ADDED TO THE TABLE MORE THAN ONCE
   likePost: function(req, res){
-      let thisPost = req.params.id;
-      models.Like.create({
-      post: thisPost,
-      user: req.user.username
-    }).then(function(thislike){
-      res.redirect('/');
+    let thisPost = req.params.id;
+    isUniqueLike(thisPost).then((isUnique) => {
+      if (isUnique) {
+        console.log('is unique');
+        models.Like.create({
+          post: thisPost,
+          user: req.user.username
+        })
+        res.redirect('/');
+      } else {
+        console.log('not unique');
+        res.redirect('/');
+      }
     })
   }
 };
+
+
+//
+// likePost: function(req, res){
+//     let thisPost = req.params.id;
+//     models.Like.create({
+//     post: thisPost,
+//     user: req.user.username
+//   }).then(function(thislike){
+//     res.redirect('/');
+//   })
+// }
 
 
 module.exports = HomeController;
