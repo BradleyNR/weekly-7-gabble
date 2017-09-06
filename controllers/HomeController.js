@@ -1,9 +1,11 @@
 const models = require('../models');
 
 
+// {order: [['updatedAt', 'DESC']]}   -- add to find all to order correctly
+
 const HomeController = {
   index: function(req, res){
-    models.Entry.findAll({order: [['updatedAt', 'DESC']]}).then(function(post){
+    models.Entry.findAll({include: [models.Like]}).then(function(post){
       res.render('homepage', {user: req.user, post: post, error: req.session.error});
       req.session.error = undefined;
     })
