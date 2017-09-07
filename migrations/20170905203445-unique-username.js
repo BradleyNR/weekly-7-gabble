@@ -2,14 +2,11 @@
 
 module.exports = {
   up: function (queryInterface, Sequelize) {
-    queryInterface.changeColumn(
-      'Userlogins',
-      'username',
-      {
-        type: Sequelize.FLOAT,
-        allowNull: false
-      }
-    )
+    queryInterface.changeColumn('Userlogins', 'username', {
+        type: 'STRING USING CAST("column" as STRING)',
+        allowNull: false,
+        unique: true
+      });
   },
 
   down: function (queryInterface, Sequelize) {
