@@ -6,7 +6,6 @@ const bCrypt = require('bcryptjs');
 const passport = require('passport'),
   LocalStrategy = require('passport-local').Strategy,
   session = require('express-session');
-  // flash = require('express-flash-messages');
 
 const routes = require('./routes');
 
@@ -107,7 +106,8 @@ app.set('view engine', 'handlebars');
 
 routes(app);
 
-app.listen(3000);
+//setting port for local dev and heroku
+app.listen(process.env.PORT || 3000);
 
 
 module.exports = app;

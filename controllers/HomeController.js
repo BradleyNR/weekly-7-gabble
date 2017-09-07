@@ -3,6 +3,7 @@ const models = require('../models');
 
 // {order: [['updatedAt', 'DESC']]}   -- add to find all to order correctly
 
+// TODO: this is not ID, change the where
 function isUniqueLike (id) {
     return models.Like.count({ where: { id: id } })
       .then(count => {
@@ -62,7 +63,7 @@ const HomeController = {
       res.render('homepage', {user: req.user, post: post, error: req.session.error});
     })
   },
-  // TODO: DO NOT LET LIKES BE ADDED TO THE TABLE MORE THAN ONCE
+  // TODO: DO NOT LET LIKES BE ADDED TO THE TABLE MORE THAN ONCE, doesn't work?
   likePost: function(req, res){
     let thisPost = req.params.id;
     isUniqueLike(thisPost).then((isUnique) => {
