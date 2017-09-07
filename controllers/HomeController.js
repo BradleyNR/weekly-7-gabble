@@ -3,21 +3,17 @@ const models = require('../models');
 
 // {order: [['updatedAt', 'DESC']]}   -- add to find all to order correctly
 
-// TODO: this is not ID, change the where
-function isUniqueLike (id) {
-    return models.Like.count({ where: { id: id } })
-      .then(count => {
-        if (count != 0) {
-          return false;
-        }
-        return true;
-    });
-}
 
-
+//show posts newest first
 const HomeController = {
   index: function(req, res){
-    models.Entry.findAll({include: [models.Like]}).then(function(post){
+    models.Entry.findAll({
+      include: [{
+        model: models.Like
+      }],
+      order: [['updatedAt', 'DESC']]
+    }).then(function(post){
+      console.log(post.Likes);
       res.render('homepage', {user: req.user, post: post, error: req.session.error});
       req.session.error = undefined;
     })
@@ -66,6 +62,18 @@ const HomeController = {
   // TODO: DO NOT LET LIKES BE ADDED TO THE TABLE MORE THAN ONCE, doesn't work?
   likePost: function(req, res){
     let thisPost = req.params.id;
+    let thisUsername = req.user.username;
+
+    function isUniqueLike (id) {
+        return models.Like.count({ where: { post: id, user: thisUsername } })
+          .then(count => {
+            if (count != 0) {
+              return false;
+            }
+            return true;
+        });
+    }
+
     isUniqueLike(thisPost).then((isUnique) => {
       if (isUnique) {
         console.log('is unique');
