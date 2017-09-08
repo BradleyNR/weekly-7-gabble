@@ -34,10 +34,10 @@
 
     <section class="authorbox row">
       <p class="button button-primary three columns button-post">User: {{author}}</p>
-      <a class="button button-primary three columns button-post" href="#">{{createdAt}}</a>
-      <a class="button button-primary two columns button-post" href="#">Likes: {{Likes.length}}</a>
+      <a class="button button-primary four columns button-post" href="#">{{postedTime}}</a>
+      <a class="button button-primary one columns button-post likes-counter" href="/like/users/{{id}}">{{Likes.length}}</a>
       <form action="/like/{{id}}" method="post">
-        <input class="button button-primary two columns button-post" type="submit" name="" value="Like">
+        <input class="button button-primary two columns button-post" id="like-button" type="submit" name="" value="Like">
       </form>
       <a class="button button-primary two columns button-post-delete" href="{{id}}/delete">Delete</a>
     </section>
@@ -45,3 +45,5 @@
 </div>
 <br>
 {{/each}}
+
+<a href="/" class="button six columns button-post offset-by-three back-button">Home</a>

@@ -1,0 +1,24 @@
+<section class="main-header">
+  <h1 class="main-header-text">Whisper Likes</h1>
+  <p>"You feel at home, surrounded by friends..."</p>
+</section>
+
+<div class="row">
+  <div class="eight columns offset-by-two postbox">
+
+    <section class="titlebox">
+      <h3>{{post.title}}</h3>
+    </section>
+
+    <section class="bodybox">
+      <p>You hear a whisper...</p>
+      <h3>{{post.body}}</h3>
+    </section>
+    <section class="authorbox row">
+      <h4>This whisper was liked by:</h4>
+      {{#each likesArray}}
+        <p class="btn button-primary twelve columns" id="liked-by-users">{{dataValues.user}}</p>
+      {{/each}}
+    </section>
+  </div>
+</div>

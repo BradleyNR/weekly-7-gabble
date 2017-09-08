@@ -90,6 +90,18 @@ body {
   background-color: #b71c1c;
 }
 
+.row #like-button {
+  border: 1px solid #000000;
+}
+
+.row .likes-counter {
+  position: relative;
+  left: 30px;
+  border-right: none;
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
 .delete-yes input {
   margin-top: 20px;
   color: #FFFFFF;
@@ -111,6 +123,21 @@ form .login-buttons:last-child{
   margin-left: 30px;
   color: #FFFFFF;
   background-color: #6D7993;
+}
+.row .go-back-button {
+  text-align: center;
+  color: white;
+}
+
+.back-button {
+  background-color: #6D7993;
+  color: #FFFFFF;
+}
+
+#liked-by-users {
+  font-family: "Raleway", "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 24px;
+  color: #FFFFFF;
 }
 
 

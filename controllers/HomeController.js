@@ -1,4 +1,5 @@
 const models = require('../models');
+const moment = require('moment');
 
 
 // {order: [['updatedAt', 'DESC']]}   -- add to find all to order correctly
@@ -13,7 +14,11 @@ const HomeController = {
       }],
       order: [['updatedAt', 'DESC']]
     }).then(function(post){
-      console.log(post[0].Likes);
+      //formats date per post from current time (ie; yesterday at 4pm)
+      post.forEach((post) => {
+        postDate = moment(post.createdAt, moment.ISO_8601).calendar();
+        post.postedTime = postDate;
+      });
       res.render('homepage', {user: req.user, post: post, error: req.session.error});
       req.session.error = undefined;
     })
@@ -46,16 +51,26 @@ const HomeController = {
   },
   deletePost: function(req, res){
     let thisPost = req.params.id;
-    models.Entry.destroy({
-      where: {id: thisPost}
-    }).then(function(){
-      res.redirect('/');
-    })
+    models.Like.destroy({
+     where: {
+       post: thisPost
+     }
+   }).then(function(){
+     models.Entry.destroy({
+       where: {id: thisPost}
+     }).then(function(){
+       res.redirect('/');
+     })
+   });
   },
   specificUserPosts: function(req, res){
     models.Entry.findAll({
       where: {userId: req.user.id}
     }).then(function(post){
+      post.forEach((post) => {
+        postDate = moment(post.createdAt, moment.ISO_8601).calendar();
+        post.postedTime = postDate;
+      });
       res.render('homepage', {user: req.user, post: post, error: req.session.error});
     })
   },
@@ -76,17 +91,26 @@ const HomeController = {
     //check to see if like is in database, if so don't allow it to go in again
     isUniqueLike(thisPost).then((isUnique) => {
       if (isUnique) {
-        console.log('is unique');
         models.Like.create({
           post: thisPost,
           user: req.user.username
         })
         res.redirect('/');
       } else {
-        console.log('not unique');
         res.redirect('/');
       }
     })
+  },
+  likedBy: function(req, res){
+    let thisPost = req.params.id;
+    models.Entry.findOne({
+      where: {id: thisPost},
+      include: [{
+        model: models.Like
+      }]
+    }).then(function(post){
+      res.render('liked', {post: post, likesArray: post.Likes});
+    });
   }
 };
 
