@@ -13,7 +13,7 @@ const HomeController = {
       }],
       order: [['updatedAt', 'DESC']]
     }).then(function(post){
-      console.log(post.Likes);
+      console.log(post[0].Likes);
       res.render('homepage', {user: req.user, post: post, error: req.session.error});
       req.session.error = undefined;
     })
@@ -73,7 +73,7 @@ const HomeController = {
             return true;
         });
     }
-
+    //check to see if like is in database, if so don't allow it to go in again
     isUniqueLike(thisPost).then((isUnique) => {
       if (isUnique) {
         console.log('is unique');
