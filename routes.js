@@ -5,11 +5,11 @@ const HomeController = require('./controllers/HomeController');
 const UserController = require('./controllers/UserController');
 
 const requireLogin = function(req, res, next) {
-  console.log('require login firing');
+  console.log('require login firing', req.user);
   if (req.user) {
     next();
   } else {
-    res.redirect('login');
+    res.redirect('/login');
   }
 };
 

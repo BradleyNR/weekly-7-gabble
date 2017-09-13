@@ -65,7 +65,10 @@ const HomeController = {
   },
   specificUserPosts: function(req, res){
     models.Entry.findAll({
-      where: {userId: req.user.id}
+      where: {userId: req.user.id},
+      include: [{
+        model: models.Like
+      }]
     }).then(function(post){
       post.forEach((post) => {
         postDate = moment(post.createdAt, moment.ISO_8601).calendar();
